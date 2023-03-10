@@ -49,7 +49,12 @@ struct MessageDetailsViewPro: View {
     }
 
     private var textView: some View {
-        RichTextViewPro(viewModel: .init(string: NSAttributedString(string: viewModel.text, attributes: [
+        
+        if let json = viewModel.json {
+            return RichTextViewPro(json: json)
+        }
+        
+        return RichTextViewPro(viewModel: .init(string: NSAttributedString(string: viewModel.text, attributes: [
             .foregroundColor: NSColor.labelColor,
             .font: NSFont.systemFont(ofSize: CGFloat(AppSettings.shared.messageFontSize)),
             .paragraphStyle: NSParagraphStyle.make(lineHeight: Constants.ResponseViewer.lineHeight(for: AppSettings.shared.messageFontSize))

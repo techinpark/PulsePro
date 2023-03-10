@@ -636,7 +636,7 @@ struct RichTextViewPro_Previews: PreviewProvider {
     }
 }
 
-private extension RichTextViewPro {
+extension RichTextViewPro {
     init(json: Any) {
         let fontSize = AppSettings.shared.viewerFontSize
         let renderer = AttributedStringJSONRenderer(fontSize: CGFloat(fontSize), lineHeight: Constants.ResponseViewer.lineHeight(for: fontSize))
